@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: 
-    username: 
-    password: 
+    url:
+    username: mysql
+    password: mysql@2018
 
   jpa:
     database: mysql
@@ -21,9 +21,11 @@ spring:
     name: app
 
 server:
-  port: 8080
+  port: 80
   session:
     timeout: 30
   tomcat:
     max-threads: 200
     uri-encoding: UTF-8
+logging:
+  config: classpath:logback.xml
