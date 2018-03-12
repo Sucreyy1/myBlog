@@ -46,7 +46,7 @@ public class IndexController {
         userInfo.setQq("5931434487");
         userInfoRepository.save(userInfo);
         responseInfo.setMessage("都给你说了还在开发,你注册你妹呢???(#滑稽脸)");
-        logger.info("{}注册成功",userName);
+        logger.info("{},注册成功",userName);
         return responseInfo;
     }
 
