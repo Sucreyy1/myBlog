@@ -24,15 +24,13 @@
     var app = angular.module('app', []);
     app.controller('HelloWorld', function ($rootScope, $scope, $http) {
         $scope.login = function () {
-            console.log($scope.userName);
-            console.log($scope.password);
             $http.get("/user/register", {
                 params: {
                     'userName': $scope.userName,
                     'password': $scope.password
                 }
             }).success(function (response) {
-                window.alert(response.message)
+                window.alert("响应码:["+response.code+"]"+response.message);
             }).error(function (repsonse) {
 
             })

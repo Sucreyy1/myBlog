@@ -1,5 +1,6 @@
 package myBlog.controller;
 
+import myBlog.Entity.ResponseCode;
 import myBlog.Entity.ResponseInfo;
 import myBlog.Entity.UserInfo;
 import myBlog.repository.UserInfoRepository;
@@ -35,7 +36,7 @@ public class IndexController {
         try {
             List<UserInfo> all = userInfoRepository.findAll();
             if(null!=all&&all.size()>3){
-                responseInfo.setResponseCode("999999");
+                responseInfo.setResponseCode(ResponseCode.COMMON_ERROR);
                 responseInfo.setMessage("都给你说了还在开发,你注册你妹呢???(#滑稽脸)");
                 return responseInfo;
             }
@@ -47,13 +48,13 @@ public class IndexController {
             userInfo.setNickName("yy");
             userInfo.setQq("5931434487");
             userInfoRepository.save(userInfo);
+            responseInfo.setResponseCode(ResponseCode.OK);
             responseInfo.setMessage("都给你说了还在开发,你注册你妹呢???(#滑稽脸)");
-            responseInfo.setResponseCode("000000");
             logger.info("{},注册成功",userName);
         } catch (Exception e) {
             logger.info(e.getMessage());
-            responseInfo.setMessage("内部出错...");
-            responseInfo.setResponseCode("999999");
+            responseInfo.setResponseCode(ResponseCode.INNER_ERROR);
+            responseInfo.setMessage("内部异常...");
             return responseInfo;
         }
         return responseInfo;

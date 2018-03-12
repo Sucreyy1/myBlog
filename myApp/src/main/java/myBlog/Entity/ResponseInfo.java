@@ -6,14 +6,19 @@ public class ResponseInfo implements Serializable {
 
     private String message;
 
-    private String responseCode;
+    private int code;
 
-    public String getResponseCode() {
-        return responseCode;
+    public int getCode() {
+        return code;
     }
 
-    public void setResponseCode(String responseCode) {
-        this.responseCode = responseCode;
+    public void setCode(int code){
+        this.code = code;
+    }
+
+    public void setResponseCode(ResponseCode responseCode) {
+        this.code = responseCode.code;
+        this.message = responseCode.message;
     }
 
     public String getMessage() {
