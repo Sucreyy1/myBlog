@@ -32,21 +32,30 @@ public class IndexController {
                                  @RequestParam(name = "password") String password
     ) {
         ResponseInfo responseInfo = new ResponseInfo();
-        List<UserInfo> all = userInfoRepository.findAll();
-        if(null!=all&&all.size()>3){
+        try {
+            List<UserInfo> all = userInfoRepository.findAll();
+            if(null!=all&&all.size()>3){
+                responseInfo.setResponseCode("999999");
+                responseInfo.setMessage("都给你说了还在开发,你注册你妹呢???(#滑稽脸)");
+                return responseInfo;
+            }
+            UserInfo userInfo = new UserInfo();
+            userInfo.setUserName(userName);
+            userInfo.setPassword(password);
+            userInfo.setAge(11);
+            userInfo.setHandphone(1111);
+            userInfo.setNickName("yy");
+            userInfo.setQq("5931434487");
+            userInfoRepository.save(userInfo);
             responseInfo.setMessage("都给你说了还在开发,你注册你妹呢???(#滑稽脸)");
+            responseInfo.setResponseCode("000000");
+            logger.info("{},注册成功",userName);
+        } catch (Exception e) {
+            logger.info(e.getMessage());
+            responseInfo.setMessage("内部出错...");
+            responseInfo.setResponseCode("999999");
             return responseInfo;
         }
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUserName(userName);
-        userInfo.setPassword(password);
-        userInfo.setAge(11);
-        userInfo.setHandphone(1111);
-        userInfo.setNickName("yy");
-        userInfo.setQq("5931434487");
-        userInfoRepository.save(userInfo);
-        responseInfo.setMessage("都给你说了还在开发,你注册你妹呢???(#滑稽脸)");
-        logger.info("{},注册成功",userName);
         return responseInfo;
     }
 
