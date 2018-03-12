@@ -26,12 +26,6 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/index/login")
-    @ResponseBody
-    public String checkLogin() {
-        return "please login";
-    }
-
     @RequestMapping("/user/register")
     @ResponseBody
     public ResponseInfo register(@RequestParam(name = "userName") String userName,
@@ -40,7 +34,7 @@ public class IndexController {
         ResponseInfo responseInfo = new ResponseInfo();
         List<UserInfo> all = userInfoRepository.findAll();
         if(null!=all&&all.size()>3){
-            responseInfo.setMessage("暂不开放注册");
+            responseInfo.setMessage("都给你说了还在开发,你注册你妹呢???(#滑稽脸)");
             return responseInfo;
         }
         UserInfo userInfo = new UserInfo();
@@ -51,8 +45,8 @@ public class IndexController {
         userInfo.setNickName("yy");
         userInfo.setQq("5931434487");
         userInfoRepository.save(userInfo);
-        responseInfo.setMessage("注册成功");
-        logger.info("注册成功");
+        responseInfo.setMessage("都给你说了还在开发,你注册你妹呢???(#滑稽脸)");
+        logger.info("{}注册成功",userName);
         return responseInfo;
     }
 

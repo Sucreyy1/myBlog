@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url:
+    url: jdbc:mysql://www.sucreyy.com:3506/myBlog?autoReconnect=true&characterEncoding=utf8
     username: mysql
     password: mysql@2018
 
