@@ -1,4 +1,5 @@
-[blogLocation]: http://www.sucreyy.com
+[blogLocation]: http://www.sucreyy.com  
+
 READ ME
 ---
 emmm...这个项目自己为了搭建一个博客。目前只是刚把框架搭好。  
